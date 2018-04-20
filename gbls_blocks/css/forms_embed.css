@@ -1,0 +1,22 @@
+footer {
+    position: static;
+}
+
+#eligible, #eligible-125, #eligible-200, #ineligible {
+    background-color: #404040;
+    color: #ffffff;
+    border: 2px solid #be404d;
+    padding: 1.5rem;
+    margin-top: 1rem;
+    display: none;
+}
+
+#eligible a:link, #eligible a:visited, #eligible a:hover, #ineligible a:link, #ineligible a:visited, #ineligible a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+#income_too_high, #outside_service_area {
+    display: none;
+}
+

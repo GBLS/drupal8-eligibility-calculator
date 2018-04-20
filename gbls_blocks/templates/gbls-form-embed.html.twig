@@ -1,0 +1,141 @@
+<div style="padding: 1em">
+    <form class="form-horizontal" onsubmit="return false;" id="eligibilityform">
+        <fieldset>
+
+            <!-- Form Name -->
+            <legend>GBLS Eligibility Checker</legend>
+
+            <div>
+                <p>
+                    GBLS represents clients in a wide variety of civil (not criminal) matters. We also assist with criminal record (CORI) sealing.
+                    Specific priorities and case acceptance criteria change often.
+                    You can check your income and location eligibility for most of GBLS's services below. Not every eligible client will receive help.
+                </p>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-4 control-label">How many people live with you?</label>
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <input id="householdSize" name="householdSize" type="text" required="">
+                    </div>
+                    <p class="help-block">Include yourself, your spouse, children, and any adults taken care of by the head of household.</p>
+                </div>
+            </div>
+
+            <!-- Prepended text-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="income">What is your household's income?</label>
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <span class="input-group-addon">$</span>
+                        <input id="income" name="income" class="form-control" placeholder="0" type="text" class="form-control input-md" required="">
+                    </div>
+                    <p class="help-block">Put in the best number you know.</p>
+                </div>
+            </div>
+
+            <!-- Select Basic -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="period">How often do you earn that amount?</label>
+                <div class="col-md-4">
+                    <select id="period" name="period" class="form-control" required="">
+                        <option value="weekly">Weekly</option>
+                        <option value="biweekly">Bi-Weekly</option>
+                        <option value="monthly">Monthly</option>
+                        <option value="annually">Annually</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="zip">What is your zip code?</label>
+                <div class="col-md-4">
+                    <input id="zip" name="zip" type="text" placeholder="02114" class="form-control input-md" required="">
+
+                </div>
+            </div>
+
+            <!-- Multiple Checkboxes -->
+            <div class="form-group">
+            <label class="col-md-4 control-label" for="special_eligiblity">Special Eligibility Circumstances</label>
+            <div class="col-md-4">
+            <div class="checkbox">
+                <label for="iselder">
+                <input type="checkbox" name="special_eligiblity" id="iselder" value="iselder">
+                I am over the age of 60
+                </label>
+                </div>
+            <div class="checkbox">
+                <label for="ismedicare">
+                <input type="checkbox" name="special_eligiblity" id="ismedicare" value="ismedicare">
+                I am looking for assistance with Medicare
+                </label>
+                </div>            
+            <div class="checkbox">
+                <label for="ismedicare_ext">
+                <input type="checkbox" name="special_eligiblity" id="ismedicare_ext" value="ismedicare_ext">
+                I am looking for assistance with Medicare and live in Middlesex or Essex Counties
+                </label>
+                </div>
+            <div class="checkbox">
+                <label for="isvictim">
+                <input type="checkbox" name="special_eligiblity" id="isvictim" value="isvictim">
+                I am (or my child is) a victim of crime or survivor of crime
+                </label>
+                </div>
+            </div>
+            </div>
+
+        </fieldset>
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="check-eligibility"></label>
+            <div class="col-md-8">
+                <button id="check-eligibility" name="check-eligibility" onclick="checkForm()" class="btn btn-success">Check my eligibility</button>
+                <a href="/get-legal-help/towns-served">View rules</a>
+            </div>
+        </div>
+
+    </form>
+    <div id="eligible-125">
+        <p>It appears you may qualify for assistance. You live in the GBLS service area and your income is below the maximum
+            limit. Call our <a href="tel:1-617-371-1234">main office (617-371-1234)</a> 
+        to find out if we can help with your specific legal issue. Please note: not all eligible families can be helped.
+        </p>
+    </div>
+    <div id="eligible-200">
+        <p>You may qualify for assistance. You earn more than 125% of the poverty level, but less than 200%.
+        GBLS can help people with your income in special circumstances. Call our <a href="tel:1-617-371-1234">main office (617-371-1234)</a> 
+        to find out if we can help with your specific legal issue. Please note: not all eligible families can be helped.
+        </p>
+    </div>
+    <div id="eligible">
+        <p>It appears you may qualify for assistance based on the special circumstances you selected.
+         Call our <a href="tel:1-617-371-1234">main office (617-371-1234)</a> to find out if we can help with your specific
+            legal issue. Please note: not all eligible families can be helped.</p>
+    </div>
+    <div id="ineligible">
+        <div id="outside_service_area">
+            <p>
+                Your zip code is outside of GBLS's service area.
+            </p>
+        </div>
+        <div id="income_too_high">
+            <p>
+                Your income is too high.
+            </p>
+        </div>
+        <p>
+            Unfortunately, based on your income or location, it appears you probably don't qualify for GBLS's assistance. 
+            Eligibility may change for different legal problems and with special circumstances (for example, unusually high medical expenses).
+            If you think an exception applies for your case, you can call our <a href="tel:1-617-371-1234">main office (617-371-1234)</a> and speak to an attorney to confirm your
+            eligibility. 
+        </p>
+        <p>    
+            If these exceptions do not apply, we recommend that you check the
+            <a href="https://www.masslegalservices.org/FindLegalAid">legal resource finder</a> to determine if another legal services program may be able to assist you.
+        </p>
+    </div>
+
+</div>

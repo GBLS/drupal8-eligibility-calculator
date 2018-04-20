@@ -1,0 +1,8 @@
+forms_embed:
+  js:
+    js/forms_embed.js:  {}
+  css:
+    theme:
+      https://bootsnipp.com/dist/bootsnipp.min.css: {}
+      https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css: {}
+      css/forms_embed.css: {}
