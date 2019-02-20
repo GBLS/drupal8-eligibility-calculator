@@ -14,6 +14,11 @@ use Drupal\Core\Block\BlockBase;
  */
 class FormEmbed extends BlockBase {
 
+  public function gbls_blocks_preprocess_build(&$variables) {
+    $variables['checker_title'] = \Drupal::config('gbls_blocks.settings')->get('checker_title');
+    //$variables['checker_title'] = 'Test';
+  }
+
   /**
    * {@inheritdoc}
    */
