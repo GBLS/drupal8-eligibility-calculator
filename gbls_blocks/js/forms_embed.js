@@ -1,16 +1,3 @@
-// Unused
-const incomeTable = {
-    1: 15175,
-    2: 20575,
-    3: 25975,
-    4: 31375,
-    5: 36775,
-    6: 42175,
-    7: 47575,
-    8: 52975,
-    over: 5400,
-};
-
 const incomeBase = 12140;
 const incomeIncrement = 4320;
 

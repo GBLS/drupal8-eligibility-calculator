@@ -1,0 +1,7 @@
+gbls_blocks.admin_settings:
+  path: '/admin/config/gbls_blocks'
+  defaults:
+    _form: '\Drupal\gbls_blocks\Form\ModuleConfigurationForm'
+    _title: 'Configure Eligibility Checker'
+  requirements:
+    _permission: 'administer site configuration'
