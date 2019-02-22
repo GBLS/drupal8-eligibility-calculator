@@ -1,5 +1,9 @@
 {{kint()}}
 
+<input type="hidden" id="poverty_base" value="{{poverty_base}}"/>
+<input type="hidden" id="poverty_increment" value="{{poverty_increment}}"/>
+<input type="hidden" id="coverage_zips" value="{{coverage_zips}}"/>
+
 <div style="padding: 1em">
     <form class="form-horizontal" onsubmit="return false;" id="eligibilityform">
         <fieldset>
@@ -93,7 +97,7 @@
             <label class="col-md-4 control-label" for="check-eligibility"></label>
             <div class="col-md-8">
                 <button id="check-eligibility" name="check-eligibility" onclick="checkForm()" class="btn btn-success">Check my eligibility</button>
-                <a href="/get-legal-help/towns-served">View rules</a>
+                <a href="{{rules_url}}">View rules</a>
             </div>
         </div>
 
@@ -115,7 +119,7 @@
     <div id="ineligible">
         <div id="outside_service_area">
             <p>
-                Your zip code is outside of GBLS's service area.
+                Your zip code is outside of our service area.
             </p>
         </div>
         <div id="income_too_high">

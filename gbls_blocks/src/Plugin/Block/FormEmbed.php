@@ -27,6 +27,8 @@ class FormEmbed extends BlockBase implements BlockPluginInterface {
     $config = $this->getConfiguration();
 
     $poverty_base = isset($config['poverty_base']) ? $config['poverty_base'] : '';
+    $rules_url = isset($config['rules_url']) ? $config['rules_url'] : '';
+    $coverage_zips = isset($config['coverage_zips']) ? $config['coverage_zips'] : '';
     $poverty_increment = isset($config['poverty_increment']) ? $config['poverty_increment'] : '';
     $checker_title = isset($config['checker_title']) ? $config['checker_title'] : '';
     $checker_description = isset($config['checker_description']) ? $config['checker_description'] : '';
@@ -41,6 +43,8 @@ class FormEmbed extends BlockBase implements BlockPluginInterface {
      '#checker_description' => $checker_description,
      '#checker_qualifies' => $checker_qualifies,
      '#checker_disqualifies' => $checker_disqualifies,
+     '#rules_url' => $rules_url,
+     '#coverage_zips' => $coverage_zips,
      '#attached' => ['library' => ['gbls_blocks/forms_embed']],
     ];
     return $build;
@@ -56,22 +60,17 @@ class FormEmbed extends BlockBase implements BlockPluginInterface {
     $config = $this->getConfiguration();
 
     // Add a form field to the existing block configuration form.
-    $form['poverty_base'] = array(
-      '#type' => 'number',
-      '#title' => t('Poverty Base Number'),
-      '#default_value' => isset($config['poverty_base']) ? $config['poverty_base'] : '',
-    );
-
-    $form['poverty_increment'] = array(
-      '#type' => 'number',
-      '#title' => t('Amount for each additional family member'),
-      '#default_value' => isset($config['poverty_increment']) ? $config['poverty_increment'] : '',
-    );
 
     $form['checker_title'] = array(
       '#type' => 'textfield',
-      '#title' => t('Title'),
+      '#title' => t('Eligibility Checker Title'),
       '#default_value' => isset($config['checker_title']) ? $config['checker_title'] : '',
+    );
+
+    $form['rules_url'] = array(
+      '#type' => 'textfield',
+      '#title' => t('URL to description of eligibility rules'),
+      '#default_value' => isset($config['rules_url']) ? $config['rules_url'] : '',
     );
     
     $form['checker_description'] = array(
@@ -81,6 +80,18 @@ class FormEmbed extends BlockBase implements BlockPluginInterface {
       '#format' => 'full_html',
       '#title' => t('Description'),
       '#default_value' => isset($config['checker_description']['value']) ? $config['checker_description']['value'] : '',
+    );
+
+    $form['poverty_base'] = array(
+      '#type' => 'number',
+      '#title' => t('Poverty Guideline (see https://aspe.hhs.gov)'),
+      '#default_value' => isset($config['poverty_base']) ? $config['poverty_base'] : '',
+    );
+
+    $form['poverty_increment'] = array(
+      '#type' => 'number',
+      '#title' => t('Increased amount for each additional family member (see bottom number on table)'),
+      '#default_value' => isset($config['poverty_increment']) ? $config['poverty_increment'] : '',
     );
     
     $form['checker_qualifies'] = array(
@@ -100,8 +111,14 @@ class FormEmbed extends BlockBase implements BlockPluginInterface {
       '#title' => t("Message if the client doesn't qualify"),
       '#default_value' => isset($config['checker_disqualifies']['value']) ? $config['checker_disqualifies']['value'] : '',
     );    
-
     
+    $form['coverage_zips'] = array(
+      '#type' => 'textarea',
+      '#title' => t('List of zip codes in your service area'),
+      '#default_value' => isset($config['coverage_zips']) ? $config['coverage_zips'] : '',
+    );
+
+
     return $form;
   }
 
@@ -110,25 +127,6 @@ class FormEmbed extends BlockBase implements BlockPluginInterface {
   /**
    * {@inheritdoc}
    */
-/*
-  public function blockSubmit($form, FormStateInterface $form_state) {
-
-    $config = $this->getConfiguration();
-    $values = $form_state->getValues();
-
-    $config->set('poverty_base',$values['poverty_base'])
-    ->set('poverty_increment',$values['poverty_increment'])
-    ->set('checker_title',$values['checker_title'])
-    ->set('checker_description.value',$values['checker_title']['value'])
-    ->set('checker_description.format',$values['checker_title']['format'])
-    ->set('checker_qualifies.value',$values['checker_title']['value'])
-    ->set('checker_qualifies.format',$values['checker_title']['format'])
-    ->set('checker_disqualifies.value',$values['checker_title']['value'])
-    ->set('checker_disqualifies.format',$values['checker_title']['format'])
-    ->save();
-  }
-*/
-  ///*
   public function blockSubmit($form, FormStateInterface $form_state) {
     $values = $form_state->getValues();
 
@@ -136,25 +134,17 @@ class FormEmbed extends BlockBase implements BlockPluginInterface {
     $this->setConfigurationValue('poverty_base', $form_state->getValue('poverty_base'));
     $this->setConfigurationValue('poverty_increment', $form_state->getValue('poverty_increment'));
     $this->setConfigurationValue('checker_title', $form_state->getValue('checker_title'));
-//    $this->setConfigurationValue('checker_description', $form_state->getValue('checker_description'));
-//    $this->setConfigurationValue('checker_qualifies', $form_state->getValue('checker_qualifies'));
-//    $this->setConfigurationValue('checker_disqualifies', $form_state->getValue('checker_disqualifies'));
+    $this->setConfigurationValue('rules_url', $form_state->getValue('rules_url'));
+    $this->setConfigurationValue('coverage_zips', $form_state->getValue('coverage_zips'));
+
+    // This is the only way to save array values
     $this->configuration['checker_description']['value'] = $values['checker_description']['value'];
     $this->configuration['checker_qualifies']['value'] = $values['checker_qualifies']['value'];
     $this->configuration['checker_disqualifies']['value'] = $values['checker_disqualifies']['value'];
     $this->configuration['checker_description']['format'] = $values['checker_description']['format'];
     $this->configuration['checker_qualifies']['format'] = $values['checker_qualifies']['format'];
     $this->configuration['checker_disqualifies']['format'] = $values['checker_disqualifies']['format'];
-/*    
-    $this->setConfigurationValue('checker_description.value', $values['checker_description']['value']);
-    $this->setConfigurationValue('checker_qualifies.value', $values['checker_qualifies']['value']);
-    $this->setConfigurationValue('checker_disqualifies.value', $values['checker_disqualifies']['value']);    
-    $this->setConfigurationValue('checker_description.format', $values['checker_description']['format']);
-    $this->setConfigurationValue('checker_qualifies.format', $values['checker_qualifies']['format']);
-    $this->setConfigurationValue('checker_disqualifies.format', $values['checker_disqualifies']['format']);    
-    */
   }
-//*/
 
 }
 
