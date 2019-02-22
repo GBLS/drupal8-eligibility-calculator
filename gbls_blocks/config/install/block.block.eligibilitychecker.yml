@@ -1,0 +1,39 @@
+uuid: 00427e25-0ed1-4c38-95c1-8966a19043d0
+langcode: en
+status: true
+dependencies:
+  module:
+    - gbls_blocks
+id: eligibilitychecker
+region: content
+weight: 0
+provider: null
+plugin: form_embed
+settings:
+  id: form_embed
+  label: 'Eligibility Checker'
+  provider: gbls_blocks
+  label_display: '0'
+  poverty_base: '12490'
+  poverty_increment: '4420'
+  checker_title: 'GBLS Eligibility Checker'
+  checker_description:
+    value: "<p>GBLS represents clients in a wide variety of civil (not criminal) matters. We also assist with criminal record (CORI) sealing. Specific priorities and case acceptance criteria change often. You can check your income and location eligibility for most of GBLS's services below. Not every eligible client will receive help.</p>\r\n"
+    format: full_html
+  checker_qualifies:
+    value: "<p>It appears you may qualify for assistance. You live in the GBLS service area and your income is below the maximum limit. Call our <a href=\"tel:1-617-371-1234\"> main office (617-371-1234)</a> to find out if we can help with your specific legal issue. Please note: not all eligible families can be helped.</p>\r\n"
+    format: full_html
+  checker_disqualifies:
+    value: "<p>Unfortunately, based on your income or location, it appears you probably don't qualify for GBLS's assistance. Eligibility may change for different legal problems and with special circumstances (for example, unusually high medical expenses). If you think an exception applies for your case, you can call our <a href=\"tel:1-617-371-1234\">main office (617-371-1234)</a> and speak to an attorney to confirm your eligibility.</p>\r\n\r\n<p>If these exceptions do not apply, we recommend that you check the <a href=\"https://www.masslegalservices.org/FindLegalAid\">legal resource finder</a> to determine if another legal services program may be able to assist you.</p>\r\n"
+    format: full_html
+  rules_url: /get-legal-help/towns-served
+  coverage_zips: "\"02108\",\r\n  \"02109\",\r\n  \"02110\",\r\n  \"02111\",\r\n  \"02112\",\r\n  \"02113\",\r\n  \"02114\",\r\n  \"02115\",\r\n  \"02116\",\r\n  \"02117\",\r\n  \"02118\",\r\n  \"02119\",\r\n  \"02120\",\r\n  \"02121\",\r\n  \"02122\",\r\n  \"02123\",\r\n  \"02124\",\r\n  \"02125\",\r\n  \"02126\",\r\n  \"02127\",\r\n  \"02128\",\r\n  \"02129\",\r\n  \"02130\",\r\n  \"02131\",\r\n  \"02132\",\r\n  \"02133\",\r\n  \"02134\",\r\n  \"02135\",\r\n  \"02136\",\r\n  \"02137\",\r\n  \"02150\",\r\n  \"02151\",\r\n  \"02152\",\r\n  \"02163\",\r\n  \"02196\",\r\n  \"02199\",\r\n  \"02201\",\r\n  \"02203\",\r\n  \"02204\",\r\n  \"02205\",\r\n  \"02206\",\r\n  \"02210\",\r\n  \"02211\",\r\n  \"02212\",\r\n  \"02215\",\r\n  \"02217\",\r\n  \"02222\",\r\n  \"02241\",\r\n  \"02266\",\r\n  \"02283\",\r\n  \"02284\",\r\n  \"02293\",\r\n  \"02297\",\r\n  \"02298\",\r\n  \"01718\",\r\n  \"01720\",\r\n  \"02474\",\r\n  \"02476\",\r\n  \"01730\",\r\n  \"02478\",\r\n  \"01719\",\r\n  \"02184\",\r\n  \"02185\",\r\n  \"02445\",\r\n  \"02446\",\r\n  \"02447\",\r\n  \"02138\",\r\n  \"02139\",\r\n  \"02140\",\r\n  \"02141\",\r\n  \"02142\",\r\n  \"02238\",\r\n  \"02021\",\r\n  \"01741\",\r\n  \"02025\",\r\n  \"01742\",\r\n  \"02149\",\r\n  \"01451\",\r\n  \"02043\",\r\n  \"02044\",\r\n  \"02343\",\r\n  \"02045\",\r\n  \"02420\",\r\n  \"02421\",\r\n  \"01773\",\r\n  \"01460\",\r\n  \"02148\",\r\n  \"01754\",\r\n  \"02153\",\r\n  \"02155\",\r\n  \"02176\",\r\n  \"02186\",\r\n  \"02187\",\r\n  \"02458\",\r\n  \"02459\",\r\n  \"02461\",\r\n  \"02462\",\r\n  \"02464\",\r\n  \"02460\",\r\n  \"02495\",\r\n  \"02156\",\r\n  \"02466\",\r\n  \"02467\",\r\n  \"02475\",\r\n  \"01864\",\r\n  \"01889\",\r\n  \"02061\",\r\n  \"02169\",\r\n  \"02170\",\r\n  \"02171\",\r\n  \"02269\",\r\n  \"02368\",\r\n  \"01867\",\r\n  \"02066\",\r\n  \"02143\",\r\n  \"02144\",\r\n  \"02145\",\r\n  \"02180\",\r\n  \"01775\",\r\n  \"01880\",\r\n  \"02451\",\r\n  \"02452\",\r\n  \"02453\",\r\n  \"02454\",\r\n  \"02471\",\r\n  \"02472\",\r\n  \"02477\",\r\n  \"02188\",\r\n  \"02043\",\r\n  \"02189\",\r\n  \"02190\",\r\n  \"02191\",\r\n  \"01887\",\r\n  \"01890\",\r\n  \"01801\",\r\n  \"01813\",\r\n  \"01815\",\r\n  \"01888\""
+  poverty_multiplier_1: '125'
+  poverty_multiplier_2: '200'
+  checker_qualifies_level2:
+    value: "<p>You may qualify for assistance. You earn more than 125% of the poverty level, but less than 200%. GBLS can help people with your income in special circumstances. Call our <a href=\"tel:1-617-371-1234\">main office (617-371-1234)</a> to find out if we can help with your specific legal issue. Please note: not all eligible families can be helped.</p>\r\n"
+    format: full_html
+  checker_qualifies_special:
+    value: "<p>It appears you may qualify for assistance based on the special circumstances you selected. Call our <a href=\"tel:1-617-371-1234\">main office (617-371-1234)</a> to find out if we can help with your specific legal issue. Please note: not all eligible families can be helped.</p>\r\n"
+    format: full_html
+visibility: {  }

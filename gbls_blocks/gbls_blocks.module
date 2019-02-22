@@ -11,9 +11,13 @@ function gbls_blocks_theme($existing, $type, $theme, $path) {
         'checker_title' => NULL,
         'checker_description' => NULL,
         'checker_qualifies' => NULL,
+        'checker_qualifies_level2' => NULL,
+        'checker_qualifies_special' => NULL,
         'checker_disqualifies' => NULL,
         'rules_url' => NULL,
         'coverage_zips' => NULL,
+        'poverty_multiplier_1' => NULL,
+        'poverty_multiplier_2' => NULL,
       ],
     ),
   );

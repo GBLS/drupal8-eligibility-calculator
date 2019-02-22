@@ -2,6 +2,8 @@
 
 <input type="hidden" id="poverty_base" value="{{poverty_base}}"/>
 <input type="hidden" id="poverty_increment" value="{{poverty_increment}}"/>
+<input type="hidden" id="poverty_multiplier_1" value="{{poverty_multiplier_1}}"/>
+<input type="hidden" id="poverty_multiplier_2" value="{{poverty_multiplier_2}}"/>
 <input type="hidden" id="coverage_zips" value="{{coverage_zips}}"/>
 
 <div style="padding: 1em">
@@ -56,7 +58,7 @@
             <div class="form-group">
                 <label class="col-md-4 control-label" for="zip">What is your zip code?</label>
                 <div class="col-md-4">
-                    <input id="zip" name="zip" type="text" placeholder="02114" class="form-control input-md" required="">
+                    <input id="zip" name="zip" type="text" class="form-control input-md" required="">
 
                 </div>
             </div>
@@ -106,15 +108,10 @@
         {{ checker_qualifies['value']|raw}}
     </div>
     <div id="eligible-200">
-        <p>You may qualify for assistance. You earn more than 125% of the poverty level, but less than 200%.
-        GBLS can help people with your income in special circumstances. Call our <a href="tel:1-617-371-1234">main office (617-371-1234)</a> 
-        to find out if we can help with your specific legal issue. Please note: not all eligible families can be helped.
-        </p>
+        {{ checker_qualifies_level2['value']|raw}}
     </div>
     <div id="eligible">
-        <p>It appears you may qualify for assistance based on the special circumstances you selected.
-         Call our <a href="tel:1-617-371-1234">main office (617-371-1234)</a> to find out if we can help with your specific
-            legal issue. Please note: not all eligible families can be helped.</p>
+        {{ checker_qualifies_special['value']|raw}}
     </div>
     <div id="ineligible">
         <div id="outside_service_area">
@@ -131,8 +128,6 @@
             {{checker_disqualifies['value']|raw}}
         </p>
         <p>    
-            If these exceptions do not apply, we recommend that you check the
-            <a href="https://www.masslegalservices.org/FindLegalAid">legal resource finder</a> to determine if another legal services program may be able to assist you.
         </p>
     </div>
 
