@@ -1,8 +1,8 @@
-var incomeBase = document.getElementById('poverty_base').value
-var incomeIncrement = document.getElementById('poverty_increment').value
+var incomeBase = parseInt(document.getElementById('poverty_base').value)
+var incomeIncrement = parseInt(document.getElementById('poverty_increment').value)
 
-var poverty_multiplier_1  = document.getElementById('poverty_multiplier_1').value / 100
-var poverty_multiplier_2 = document.getElementById('poverty_multiplier_2').value / 100
+var poverty_multiplier_1  = parseInt(document.getElementById('poverty_multiplier_1').value ) / 100
+var poverty_multiplier_2 = parseInt(document.getElementById('poverty_multiplier_2').value) / 100
 
 var zips = document.getElementById('coverage_zips').value
 
@@ -34,10 +34,14 @@ function checkIncome(householdSize, income, period, povertyMultiplier) {
     }
 
     var annualizedIncome = income * multiplier;
+    console.log("Annual income is " + annualizedIncome);
     var fudgeFactor = 1.01; // 1% fudge factor to avoid cliff that doesn't reflect our true policies
     var limit = (incomeBase + ((householdSize - 1) * incomeIncrement)) * povertyMultiplier * fudgeFactor 
+    console.log("Limit is " + limit)
+    var qualifies = annualizedIncome <= limit;
+    console.log("Qualifies: " +  qualifies)
 
-    return annualizedIncome <= limit;
+    return qualifies;
 
 }
 
