@@ -5,7 +5,14 @@
 function gbls_blocks_theme($existing, $type, $theme, $path) {
   return array(
     'gbls_form_embed' => array(
-      'variables' => array(),
+      'variables' => [
+        'poverty_base' => NULL,
+        'poverty_increment' => NULL,
+        'checker_title' => NULL,
+        'checker_description' => NULL,
+        'checker_qualifies' => NULL,
+        'checker_disqualifies' => NULL,
+      ],
     ),
   );
 }

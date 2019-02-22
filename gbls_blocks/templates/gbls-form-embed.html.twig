@@ -1,3 +1,5 @@
+{{kint()}}
+
 <div style="padding: 1em">
     <form class="form-horizontal" onsubmit="return false;" id="eligibilityform">
         <fieldset>
@@ -7,10 +9,7 @@
 
             <div>
                 <p>
-                    
-                    GBLS represents clients in a wide variety of civil (not criminal) matters. We also assist with criminal record (CORI) sealing.
-                    Specific priorities and case acceptance criteria change often.
-                    You can check your income and location eligibility for most of GBLS's services below. Not every eligible client will receive help.
+                    {{ checker_description['value'] | raw }}
                 </p>
             </div>
 
@@ -100,10 +99,7 @@
 
     </form>
     <div id="eligible-125">
-        <p>It appears you may qualify for assistance. You live in the GBLS service area and your income is below the maximum
-            limit. Call our <a href="tel:1-617-371-1234">main office (617-371-1234)</a> 
-        to find out if we can help with your specific legal issue. Please note: not all eligible families can be helped.
-        </p>
+        {{ checker_qualifies['value']|raw}}
     </div>
     <div id="eligible-200">
         <p>You may qualify for assistance. You earn more than 125% of the poverty level, but less than 200%.
@@ -128,10 +124,7 @@
             </p>
         </div>
         <p>
-            Unfortunately, based on your income or location, it appears you probably don't qualify for GBLS's assistance. 
-            Eligibility may change for different legal problems and with special circumstances (for example, unusually high medical expenses).
-            If you think an exception applies for your case, you can call our <a href="tel:1-617-371-1234">main office (617-371-1234)</a> and speak to an attorney to confirm your
-            eligibility. 
+            {{checker_disqualifies['value']|raw}}
         </p>
         <p>    
             If these exceptions do not apply, we recommend that you check the
